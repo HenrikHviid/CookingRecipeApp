@@ -1,15 +1,16 @@
+  
 {
-    "name": "Hello World",
-    "short_name": "Hello",
-    "lang": "en-US",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "background_color": "white",
-    "theme_color": "white",
-    "icons": [
-      {
-        "src": "images/icon.png",
-        "sizes": "512x512"
-      }
-    ]
-  }
+  "name": "Hello World",
+  "short_name": "Hello",
+  "lang": "en-US",
+  "start_url": "/CookingRecipeApp/index.html",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white",
+  "icons": [
+    {
+      "src": "images/icon.png",
+      "sizes": "512x512"
+    }]
+}
+
