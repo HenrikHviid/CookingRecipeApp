@@ -1,15 +1,16 @@
   
 {
-  "name": "Hello World",
-  "short_name": "Hello",
+  "name": "Enhanced Cooking App",
+  "short_name": "ECA",
+  "description": "Enhanced Cooking for everyone",
   "lang": "en-US",
   "start_url": "/CookingRecipeApp/index.html",
   "display": "standalone",
-  "background_color": "white",
-  "theme_color": "white",
+  "background_color": "#000000",
+  "theme_color": "#0f4a73",
   "icons": [
     {
-      "src": "images/icon.png",
+      "src": "images/icon512.png",
       "sizes": "512x512",
       "type": "images/png"
     }]
