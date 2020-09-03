@@ -5,5 +5,11 @@
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "white",
-    "theme_color": "white"
+    "theme_color": "white",
+    "icons": [
+      {
+        "src": "images/icon.png",
+        "sizes": "512x512"
+      }
+    ]
   }
