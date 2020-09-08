@@ -1,29 +1,41 @@
+var cacheName = 'pwa-cookingrecipeapp';
+var dataCacheName = 'pwa-cookingrecipeapp';
 
+var filesToCache = ['index.html', './css/style.css'];
 
-self.addEventListener('install', event => {
-    // fires when the browser installs the app
-    // here we're just logging the event and the contents
-    // of the object passed to the event. 
-    // the purpose of this event is to give the service worker
-    // a place to setup the local environment after the installation completes.
-    console.log(`Event fired: ${event.type}`);
-    console.dir(event);
+self.addEventListener('install', function (e) {
+  console.log('[ServiceWorker] Install');
+  e.waitUntil(
+    caches.open(cacheName).then(function (cache) {
+      console.log('[ServiceWorker] Caching app shell');
+      return cache.addAll(filesToCache);
+    })
+  );
 });
 
-self.addEventListener('activate', event => {
-    // fires after the service worker completes its installation. 
-    // It's a place for the service worker to clean up from previous 
-    // service worker versions
-    console.log(`Event fired: ${event.type}`);
-    console.dir(event);
+self.addEventListener('activate', function (e) {
+  console.log('[ServiceWorker] Activate');
+  e.waitUntil(
+    caches.keys().then(function (keyList) {
+      return Promise.all(
+        keyList.map(function (key) {
+          if (key !== cacheName && key !== dataCacheName) {
+            console.log('[ServiceWorker] Removing old cache', key);
+            return caches.delete(key);
+          }
+        })
+      );
+    })
+  );
+  return self.clients.claim();
 });
 
-self.addEventListener('fetch', event => {
-    // Fires whenever the app requests a resource (file or data)
-    // Normally this is where the service worker would check to see
-    // if the requested resource is in the local cache before going
-    // to the server to get it. 
-    console.log(`Fetching ${event.request.url}`);
-    // Go get the requested resource from the network
-    event.respondWith(fetch(event.request));
-});
+self.addEventListener('fetch', function(e) {
+    console.log(e.request.url);
+    e.respondWith(
+      caches.match(e.request).then(function(response) {
+        return response || fetch(e.request);
+      })
+    );
+  }); 
+  
