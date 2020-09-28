@@ -1,0 +1,16 @@
+
+<form id="addRecipe">
+    <label>Title</label>
+    <input id="title" type="text" placeholder="Write your title here" size="30"/>
+    <br></br><label >Description</label>
+    <input id="description" type="text" placeholder="Write your description here" size="30"/>
+    <br></br><label>Estimation</label>
+    <input id="estimation" type="number" placeholder="Write your estimation in minutes here" size="30"/>
+    <br></br><label>Ingredient List</label>
+    <input id="ingredients" type="text" placeholder="Write your ingredient here" size="30"/>
+    <button onClick={(event) => addIngredient(ingredient)}>Add to ingredient list</button>
+    <button onClick={(event) => removeLastestIngredient()}>Remove from ingredient list</button>
+    <p>ingredients: {ingredients}</p>
+    <input type="submit" value="submit">
+</form>
+    
