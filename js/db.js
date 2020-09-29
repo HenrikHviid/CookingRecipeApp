@@ -1,5 +1,3 @@
-
-
 var cookingRecipeAppDB = (function() {
   var cDB = {};
   var datastore = null;
@@ -51,7 +49,7 @@ var cookingRecipeAppDB = (function() {
    *                            have been retrieved. Will be passed a param with
    *                            an array of the todo items.
    */
-  cDB.fetchTodos = function(callback) {
+  cDB.fetchRecipes = function(callback) {
     var db = datastore;
     var transaction = db.transaction(['recipe'], 'readwrite');
     var objStore = transaction.objectStore('recipe');
@@ -86,7 +84,7 @@ var cookingRecipeAppDB = (function() {
    * Create a new todo item.
    * @param {string} text The todo item.
    */
-  cDB.createTodo = function(title, ingredients, description, estimation, callback) {
+  cDB.createRecipe = function(title, ingredients, description, estimation, callback) {
       // Get a reference to the db.
       var db = datastore;
   
@@ -124,7 +122,7 @@ var cookingRecipeAppDB = (function() {
    * @param {function} callback A callback function that will be executed if the 
    *                            delete is successful.
    */
-  cDB.deleteTodo = function(id, callback) {
+  cDB.deleteRecipe = function(id, callback) {
     var db = datastore;
     var transaction = db.transaction(['recipe'], 'readwrite');
     var objStore = transaction.objectStore('recipe');
@@ -139,7 +137,6 @@ var cookingRecipeAppDB = (function() {
       console.log(e);
     }
   };
-
 
   // Export the tDB object.
   return cDB;
