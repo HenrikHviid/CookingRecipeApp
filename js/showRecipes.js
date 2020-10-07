@@ -1,8 +1,6 @@
 window.onload = function () {
-
-    // Display the todo items.
+    // Display the recipe items.
     cookingRecipeAppDB.open(refreshRecipes);
-
     
 }
 
@@ -11,18 +9,19 @@ function refreshRecipes() {
     cookingRecipeAppDB.fetchRecipes(function (recipes) {
         var recipeList = document.getElementById('recipe-items');
 
-        if (recipeList) {
+        if (recipes) {
             recipeList.innerHTML = '';
 
-            for (var i = 0; i < recipe.length; i++) {
+            for (var i = 0; i < recipes.length; i++) {
                 // Read the recipe items backwards (most recent first).
                 var recipe = recipes[(recipes.length - 1 - i)];
 
                 var li = document.createElement('li');
-                var span = document.createElement('span');
-                span.innerHTML = recipe.title;
+                var anchor = document.createElement('a');
+                anchor.href = "./recipe.html?id=" + recipe.timestamp;
+                anchor.innerHTML = recipe.title;
 
-                li.appendChild(span);
+                li.appendChild(anchor);
                 recipeList.appendChild(li);
             }
         }
