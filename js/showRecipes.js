@@ -20,6 +20,7 @@ function refreshRecipes() {
         var anchor = document.createElement('a');
         anchor.href = './recipe.html?id=' + recipe.timestamp;
         anchor.innerHTML = recipe.title;
+
         var img = document.createElement('img');
         img.src = 'images/recipe.jpg';
         img.className = 'avatar';

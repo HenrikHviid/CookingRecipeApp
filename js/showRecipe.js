@@ -31,7 +31,7 @@ function showRecipe() {
         description.innerHTML = 'Description:';
         descriptionData.innerHTML = recipe.description;
         estimation.innerHTML = 'Estimation:';
-        estimationData.innerHTML = recipe.estimation;
+        estimationData.innerHTML = recipe.estimation + ' minutes';
         ingredients = 'Ingredients:';
         ingredientsData = recipe.ingredients;
 
