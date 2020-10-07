@@ -39,8 +39,52 @@ h1 {
 }
 
 @media only screen and (max-width: 600px) {
-    .item-flex {
-        width: calc(100% - 20px);
-        margin: 5px;
-        padding: 5px;
-    }
+  .item-flex {
+    width: calc(100% - 20px);
+    margin: 5px;
+    padding: 5px;
+  }
+
+  #recipe-items {
+    justify-content: center;
+  }
+}
+
+a:link,
+a:visited {
+  color: #f6f7f9;
+  text-align: center;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: #5faeb6;
+}
+
+#addContainer {
+  display: flex;
+  width: 81%;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  display: block;
+  width: 81%;
+  height: 25px;
+  background: #4e9caf;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+footer {
+  text-align: center;
+  font-size: xx-small;
+}
