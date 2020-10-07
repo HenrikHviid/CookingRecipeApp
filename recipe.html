@@ -1,31 +1,26 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- this links your manifest file to your app - of course update the href if you name it otherwise -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:image" content="icons/icon-512.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js"></script>
+  </head>
 
-<head>
-  <!-- this links your manifest file to your app - of course update the href if you name it otherwise -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:image" content="icons/icon-512.png">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/style.css">  
-  <script src="js/main.js"></script>
-</head>
-
-<body>
+  <body>
     <title>Enhanced Cooking</title>
-    <h1>Cooking recipe App</h1>
+    <h1><a href="index.html">Cooking recipe APP</a></h1>
 
-    <div id="recipe-item">
-
-    </div>
-
-    <a href="index.html" class="button">Home</a>
+    <div id="recipe-item"></div>
 
     <footer>
-        boop
+      Copyright &copy; EAAA student group Tony, Danny & henrik All rights
+      reserved
     </footer>
-      
-    <script src="./js/db.js"></script> 
-    <script src="./js/showRecipe.js"></script> 
-</body>
+
+    <script src="./js/db.js"></script>
+    <script src="./js/showRecipe.js"></script>
+  </body>
 </html>

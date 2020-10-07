@@ -15,25 +15,27 @@
     <title>Enhanced Cooking</title>
     <h1><a href="index.html">Cooking recipe APP</a></h1>
 
-    <form id="new-recipe-form">
-        <label>Title</label>
-        <input id="title" type="text" placeholder="Write your title here" size="30"/>
-        <br></br><label >Description</label>
-        <input id="description" type="text" placeholder="Write your description here" size="30"/>
-        <br></br><label>Estimation</label>
-        <input id="estimation" type="number" placeholder="Write your estimation in minutes here" size="30"/>
-        <br></br><label>Ingredient List</label>
-        <input id="ingredients" type="text" placeholder="Write your ingredient here" size="30"/>
-
-        <input type="submit" value="submit">
+    <div class="newrecipe_container">
+      <form id="new-recipe-form">
+        <label>Title:</label></br>
+        <input id="title type="text" placeholder="Write your title here" size="30"/></br>
+        <br></br><label >Description:</label></br>
+        <input id="description" type="text" rows="5" placeholder="Write your description here" size="30"/></br>
+        <br></br><label>Estimation:</label></br>
+        <input id="estimation" type="number" placeholder="Write your estimation in minutes here" size="30"/></br>
+        <br></br><label>Ingredient List:</label>
+        <input id="ingredients" type="text" placeholder="Write your ingredient here" size="30"/></br>
+      </br></br>
+      <input type="submit" id="submit" value="Add recipe"></form></br></br>
     </form>
-   
-
+  </div>
+    
+    
     <script src="./js/db.js"></script>
     <script src="./js/addRecipe.js"></script>
-
+    
     <footer>
-        boop
+      Copyright &copy; EAAA student group Tony, Danny & henrik All rights reserved
     </footer>
       
 </body>

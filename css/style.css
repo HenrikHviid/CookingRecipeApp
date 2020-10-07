@@ -82,9 +82,22 @@ a:active {
   color: white;
   font-weight: bold;
   line-height: 25px;
+  font-size: small;
 }
 
 footer {
   text-align: center;
   font-size: xx-small;
+}
+
+.newrecipe_container {
+  width: 81%;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recipe_image {
+  width: 60%;
 }
