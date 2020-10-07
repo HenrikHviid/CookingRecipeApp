@@ -30,12 +30,11 @@ self.addEventListener('activate', function (e) {
   return self.clients.claim();
 });
 
-self.addEventListener('fetch', function(e) {
-    console.log(e.request.url);
-    e.respondWith(
-      caches.match(e.request).then(function(response) {
-        return response || fetch(e.request);
-      })
-    );
-  }); 
-  
+self.addEventListener('fetch', function (e) {
+  console.log(e.request.url);
+  e.respondWith(
+    caches.match(e.request).then(function (response) {
+      return response || fetch(e.request);
+    })
+  );
+});
