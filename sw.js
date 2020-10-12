@@ -1,7 +1,7 @@
 var cacheName = 'pwa-cookingrecipeapp';
 var dataCacheName = 'pwa-cookingrecipeapp';
 
-var filesToCache = ['index.html', './css/style.css'];
+var filesToCache = ['index.html', './css/style.css', '404.html', 'offline.html'];
 
 self.addEventListener('install', function (e) {
   console.log('[ServiceWorker] Install');
