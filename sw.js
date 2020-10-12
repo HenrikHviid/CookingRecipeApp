@@ -30,27 +30,28 @@ self.addEventListener('activate', function (e) {
   return self.clients.claim();
 });
 
-// Cache, falling back to network
-// self.addEventListener('fetch', function (e) {
-//   //console.log(e.request.url);
-//   e.respondWith(
-//     caches.match(e.request).then(function (response) {
-//       return response || fetch(e.request) ;
-//     })
-//   );
-// });
-
-// Cache, falling back to network with frequent updates
-self.addEventListener("fetch", function (e) {
-  e.respondWith(
-    caches.open(cacheName).then(function (cache) {
-      return cache.match(e.request).then(function (cachedResponse) {
-        var fetchPromise =
-          fetch(e.request).then(function (networkResponse) {
-            cache.put(e.request, networkResponse.clone());
+self.addEventListener("fetch", function (event) {
+  event.respondWith(
+    caches.open("cache-name").then(function (cache) {
+      //Look at cache else look in network
+      //"Cache, falling back to network"
+      return cache.match(event.request).then(function (cachedResponse) {
+        return cachedResponse || fetch(event.request).then(
+          function (networkResponse) {
+            //if response have a 404 status we will return a our 404 page
+            //"Generic fallback part 1".
+            if (response.status === 404) {
+              return caches.match('pages/404.html');
+            }
+            //If the cache.put is succesful in updating the cache then return the respone else we go down to the catch
+            //"Cache on demand updating part"
+            cache.put(event.request, networkResponse.clone());
             return networkResponse;
           });
-        return cachedResponse || fetchPromise;
+      }).catch(function () {
+        // If both fail, show a generic fallback:
+        // "Generic fallback part 2"
+        return caches.match('/offline.html');
       })
     })
   );
