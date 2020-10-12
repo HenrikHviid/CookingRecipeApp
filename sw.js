@@ -30,25 +30,17 @@ self.addEventListener('activate', function (e) {
   return self.clients.claim();
 });
 
-self.addEventListener("fetch", function (event) {
+self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.open("cache-name").then(function (cache) {
-      //Look at cache else look in network
-      return cache.match(event.request).then(function (cachedResponse) {
-        return cachedResponse || fetch(event.request).then(
-          function (networkResponse) {
-            //if response have a 404 status we will return a our 404 page
-            if (response.status === 404) {
-              return caches.match('/404.html');
-            }
-            //If the cache.put is succesful in updating the cache then return the respone else we go down to the catch
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-      }).catch(function () {
-        // If both fail, show a generic fallback:
-        return caches.match('/offline.html');
-      })
+    fetch(event.request).then(function () {
+      if (response.status === 404) {
+        return caches.match('/404.html');
+      } else {
+        caches.put(event.request, networkResponse.clone());
+      }     
+    }).catch(function() {
+      return caches.match(event.request);
+      //return caches.match('/offline.html');
     })
   );
 });
