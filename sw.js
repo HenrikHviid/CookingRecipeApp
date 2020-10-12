@@ -34,23 +34,19 @@ self.addEventListener("fetch", function (event) {
   event.respondWith(
     caches.open("cache-name").then(function (cache) {
       //Look at cache else look in network
-      //"Cache, falling back to network"
       return cache.match(event.request).then(function (cachedResponse) {
         return cachedResponse || fetch(event.request).then(
           function (networkResponse) {
             //if response have a 404 status we will return a our 404 page
-            //"Generic fallback part 1".
             if (response.status === 404) {
-              return caches.match('pages/404.html');
+              return caches.match('/404.html');
             }
             //If the cache.put is succesful in updating the cache then return the respone else we go down to the catch
-            //"Cache on demand updating part"
             cache.put(event.request, networkResponse.clone());
             return networkResponse;
           });
       }).catch(function () {
         // If both fail, show a generic fallback:
-        // "Generic fallback part 2"
         return caches.match('/offline.html');
       })
     })
