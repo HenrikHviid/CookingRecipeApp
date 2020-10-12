@@ -30,17 +30,27 @@ self.addEventListener('activate', function (e) {
   return self.clients.claim();
 });
 
+//Caching Strategy "Network, falling back to cache with cache on demand and generic fallback" attempts
+// self.addEventListener('fetch', function(event) {
+//   event.respondWith(
+//     fetch(event.request).then(function () {
+//       if (response.status === 404) {
+//         return caches.match('/404.html');
+//       } else {
+//         caches.put(event.request, networkResponse.clone());
+//       }     
+//     }).catch(function() {
+//       return caches.match(event.request);
+//       //return caches.match('/offline.html');
+//     })
+//   );
+// });
+
+//Network falling back to cache
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    fetch(event.request).then(function () {
-      if (response.status === 404) {
-        return caches.match('/404.html');
-      } else {
-        caches.put(event.request, networkResponse.clone());
-      }     
-    }).catch(function() {
+    fetch(event.request).catch(function() {
       return caches.match(event.request);
-      //return caches.match('/offline.html');
     })
   );
 });
